@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Панель управления</title>
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript">
+
+		function exit(){
+			$.ajax({
+				type: 'POST',
+				url: '/clearcookie',
+				data: {'cookies': '123'},
+				success: function(data) {
+					window.location.href = "/";
+				}
+			})
+		}
+
+		$(document).ready(function(){
+			
+		});
+	</script>
+</head>
+<body>
+	Добро пожаловать в панель управления!
+	<button onclick="exit();">Выйти</button>
+</body>
+</html>

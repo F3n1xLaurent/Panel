@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Добро пожаловать</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<script type="text/javascript">
+		jQuery.fn.center = function () {
+			this.css("position","absolute");
+			this.css("top", (($(window).height() - this.outerHeight()) / 2) + $(window).scrollTop() + "px");
+			this.css("left", (($(window).width() - this.outerWidth()) / 2) + $(window).scrollLeft() + "px");
+			return this;
+		}
+
+		function loginopen(){
+			$('.login').css("display","block");
+			$('.signup').css("display","none");
+			$('.auth').css("background","#dc665e");
+			$('.auth').css("color","white");
+			$('.reg').css("background","none");
+			$('.reg').css("color","black");
+		}
+
+		function signupopen(){
+			$('.login').css("display","none");
+			$('.signup').css("display","block");
+			$('.reg').css("background","#dc665e");
+			$('.reg').css("color","white");
+			$('.auth').css("background","none");
+			$('.auth').css("color","black");
+		}
+
+		$(document).ready(function(){
+			$('.authall').center();
+
+			$('.auth').click(function(){
+				loginopen();
+				$('.authall').center();
+			});
+
+			$('.reg').click(function(){
+				signupopen();
+				$('.authall').center();
+			});
+
+		});
+
+
+
+		$(document).ready(function(){
+			$(".formlogin > input").keyup(function(event){
+				if(event.keyCode == 13){
+					var msg = $('.formlogin').serialize();
+					$.ajax({
+						type: 'POST',
+						url: '/login',
+						data: msg,
+						success: function(data) {
+							$('.information').html(data);
+							if(data == "Авторизованы!"){
+								window.location.href = "/";
+							}
+						}
+					});
+				}
+			});
+
+			$(".formreg > input").keyup(function(event){
+				if(event.keyCode == 13){
+					var msg = $('.formreg').serialize();
+					$.ajax({
+						type: 'POST',
+						url: '/signup',
+						data: msg,
+						success: function(data) {
+							$('.information').html(data);
+							if(data == "Вы успешно зарегистрированны!"){
+								window.location.href = "/";
+							}
+						}
+					});
+				}
+			});
+		});
+
+			
+		
+
+			
+
+	</script>
+</head>
+<body>
+		<div class="authall">
+			<div class="change">
+				<p class="auth">Авторизация</p>
+				<p class="reg">Регистрация</p>
+			</div>
+
+			<div class="authblock">
+				<div class="login">
+					<form class="formlogin">
+						<p>Логин</p>
+						<input type="text" name="login">
+						<p>Пароль</p>
+						<input type="password" name="password">
+					</form>
+				</div>
+
+				<div class="signup">
+					<form class="formreg">
+						<p>Логин</p>
+						<input type="text" name="login">
+						<p>Пароль</p>
+						<input type="password" name="password">
+						<p>Электронная почта</p>
+						<input type="text" name="email">
+					</form>
+				</div>
+			</div>
+
+			<div class="information">
+				<p>123</p>
+			</div>
+		</div>
+</body>
+</html>
