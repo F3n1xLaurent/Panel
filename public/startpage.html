@@ -56,9 +56,11 @@
 						url: '/login',
 						data: msg,
 						success: function(data) {
-							$('.information').html(data);
 							if(data == "Авторизованы!"){
+								$('.information').html("<p style='color: white; background: #2e8d2e;'>" + data + "</p>");
 								window.location.href = "/";
+							} else {
+								$('.information').html("<p style='color: white; background: #f44336;'>" + data + "</p>");
 							}
 						}
 					});
@@ -73,9 +75,11 @@
 						url: '/signup',
 						data: msg,
 						success: function(data) {
-							$('.information').html(data);
 							if(data == "Вы успешно зарегистрированны!"){
+								$('.information').html("<p style='color: white; background: #2e8d2e;'>" + data + "</p>");
 								window.location.href = "/";
+							} else {
+								$('.information').html("<p style='color: white; background: #f44336;'>" + data + "</p>");
 							}
 						}
 					});
@@ -120,7 +124,6 @@
 			</div>
 
 			<div class="information">
-				<p>123</p>
 			</div>
 		</div>
 </body>

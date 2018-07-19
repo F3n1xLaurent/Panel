@@ -2,14 +2,18 @@
 <html>
 <head>
 	<title>Панель управления</title>
+	<link rel="stylesheet" type="text/css" href="css/panel.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<script type="text/javascript">
 
 		function exit(){
 			$.ajax({
 				type: 'POST',
 				url: '/clearcookie',
-				data: {'cookies': '123'},
 				success: function(data) {
 					window.location.href = "/";
 				}
@@ -17,12 +21,73 @@
 		}
 
 		$(document).ready(function(){
+			var dwidth = $(document).width();
+			var dheight = $(document).height();
+
+			$('.menu').height(dheight);
 			
+
+
+			includePage('home');
+			
+
+			$('.menuopen').click(function(){
+				var widthcontent = dwidth - 220;
+				$('.content').width(dwidth - $('.menu').width());
+
+				if($('.menu').css('display') == 'block'){
+					$(".content").css('width','100%');
+					$(".menu").css('opacity','0');
+					$(".menu").animate({ width:"0px"}, 'slow');
+					$(".menu").css('display','none');
+				} else {
+					$(".menu").css('display','block');
+					$(".menu").css('width','');
+					$(".content").css('width', widthcontent);
+					$(".menu").css('opacity','1');
+				}
+			});
 		});
+
+		function includePage (page){
+				$(".contentblock").load("panel/"+page+".ejs"); 
+		}
 	</script>
 </head>
 <body>
-	Добро пожаловать в панель управления!
-	<button onclick="exit();">Выйти</button>
+	<!-- Добро пожаловать в панель управления!
+	<button onclick="exit();">Выйти</button> -->
+
+	<div class="all">
+		<div class="menu">
+			<div class="logotype">
+				<img class="headerlogo" src="images/logo.png">
+				<p>Панель для бота</p>
+			</div>
+
+			<div class="ul_menu">
+				<ul>
+					<li onclick="includePage('home');"><p class="iconmenu">&#127968;</p>Главная страница</li>
+					<li onclick="includePage('chats');"><p class="iconmenu">&#9993;</p>Чаты</li>
+					<li onclick="includePage('control');"><p class="iconmenu">&#128273;</p>Управление ботом</li>
+					<li onclick="includePage('customize');"><p class="iconmenu">&#9881;</p>Настройка</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="header">
+				<p class="menuopen">&#9776;</p>
+
+				<div class="miniprofile">
+					<button onclick="exit();">Выйти</button>
+				</div>
+			</div>
+			
+			<div class="contentblock" align="center">
+				
+			</div>
+		</div>
+	</div>
 </body>
 </html>

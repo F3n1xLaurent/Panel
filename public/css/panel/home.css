@@ -1,0 +1,39 @@
+.title{
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.box{
+	width: 93.75%;
+	margin-left: 3.125%;
+    margin-right: 3.125%;
+    border: 1px #9E9E9E solid;
+    border-top: 3px blue solid;
+    float:left;
+    margin-bottom: 20px;
+    max-width: 480px;
+}
+
+.titlebox{
+	padding-top:5px;
+	border-bottom:2px grey solid;
+	padding-bottom: 10px;
+}
+
+.titlebox p{
+	margin: 0;
+}
+
+.contentbox{
+
+}
+
+.contentbox table{
+	width: 100%;
+}
+
+.contentbox td{
+	width: 50%;
+	padding-left: 20px;
+	height: 35px;
+}

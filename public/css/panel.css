@@ -1,0 +1,112 @@
+body{
+	margin: 0;
+}
+
+/* хром, сафари */
+body::-webkit-scrollbar { width: 0; }
+
+/* ie 10+ */
+body { -ms-overflow-style: none; }
+
+/* фф (свойство больше не работает, других способов тоже нет)*/
+body { overflow: -moz-scrollbars-none; }
+
+
+.all{
+	width: 100%;
+    height: 100%;
+}
+
+.menu{
+	float: left;
+    width: 220px;
+    background: white;
+    text-align: center;
+    padding-top: 4px;
+    display: none;
+    -webkit-box-shadow: inset -1px 1px 25px -2px rgba(50, 50, 50, 0.3);
+    -moz-box-shadow:    inset -1px 1px 25px -2px rgba(50, 50, 50, 0.3);
+    box-shadow:         inset -1px 1px 25px -2px rgba(50, 50, 50, 0.3);
+}
+
+.logotype{
+
+}
+
+.headerlogo{
+	width: 150px;
+}
+
+.logotype p{
+	margin: 0;
+    margin-top: -6px;
+    font-size: 12px;
+}
+
+.ul_menu{
+	text-align: left;
+}
+
+.ul_menu ul{
+	list-style: none;
+    padding: 0;
+}
+
+.ul_menu li{
+	padding: 10px;
+}
+
+.ul_menu li:hover{
+	color: #2196f3;
+	border-left: 5px #2196f3 solid;
+}
+
+.iconmenu{
+	float: left;
+    margin: 0;
+    padding: 0;
+    margin-top: -6px;
+    font-size: 20px;
+    padding-right: 35px;
+    width: 20px;
+}
+
+
+
+
+
+.content{
+	float: left;
+	width: 100%;
+}
+
+.header{
+	width: 100%;
+    height: 45px;
+    background: #f9908e;
+}
+
+.menuopen{
+	border: 0;
+    margin: 0;
+    font-size: 30px;
+    padding-left: 10px;
+    color: white;
+    width: 35px;
+    float: left;
+}
+
+.miniprofile button{
+	float: right;
+	margin-right: 10px;
+    margin-top: 7px;
+    outline: none;
+    border: 1px gray solid;
+    background: white;
+}
+
+
+.contentblock{
+    padding-left: 3.125%;
+    padding-right: 3.125%;
+}
